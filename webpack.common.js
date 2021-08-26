@@ -8,7 +8,7 @@ module.exports = {
 
     output: {
         path: path.resolve(__dirname, 'public'),
-        filename: '[name].[hash].js'
+        filename: '[name].[fullhash].js'
     },
 
     module: {

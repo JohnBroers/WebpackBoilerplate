@@ -1,11 +1,14 @@
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
+const path = require('path')
 const common = require('./webpack.common.js')
 const webpack = require('webpack')
 
 module.exports = merge(common, {
     mode: 'development', 
     devServer: {
-        contentBase: common.output.path,
+        static: {
+            directory: path.resolve(__dirname, 'src'),
+        },
         compress: true,
         port: 3000,
         open: true,
@@ -24,8 +27,10 @@ module.exports = merge(common, {
             }
         ]
     },
+    optimization: {
+        moduleIds: 'named'
+    },
     plugins: [
-        new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ]
 });

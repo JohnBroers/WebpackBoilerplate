@@ -1,10 +1,9 @@
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-
 
 module.exports = merge(common, {
     mode: 'production',
@@ -22,7 +21,7 @@ module.exports = merge(common, {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin('public', {} ),
+        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/style.[contenthash].css',
         }),
